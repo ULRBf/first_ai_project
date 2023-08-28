@@ -1,3 +1,3 @@
 print("Ex1")
 print("Ex1")
-print("Ex1ㅇㄹㅇㄹㅇ")
+print("Ex1ㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇ")
