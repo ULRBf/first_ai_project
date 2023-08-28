@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>joinForm</class>
+ <widget class="QDialog" name="joinForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>400</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>회원가입</string>
+  </property>
+  <widget class="QLineEdit" name="le_id_input">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>120</y>
+     <width>180</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>차량 번호판</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_pw_input">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>160</y>
+     <width>180</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>비밀번호</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_cpw_input">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>200</y>
+     <width>180</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>비밀번호 확인</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>50</y>
+     <width>56</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>회원가입</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_name_input">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>240</y>
+     <width>180</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>이름</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_open_login">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>450</y>
+     <width>140</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: #000000;
+color: white;
+border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>가입하기</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_contact_input">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>280</y>
+     <width>180</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>연락처</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
