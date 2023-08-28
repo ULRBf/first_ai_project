@@ -47,15 +47,18 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: #FFFFFF;</string>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QPushButton" name="icon_title_img">
         <property name="geometry">
          <rect>
           <x>220</x>
-          <y>128</y>
+          <y>140</y>
           <width>160</width>
           <height>160</height>
          </rect>
@@ -82,19 +85,16 @@ color: #FFFFFF;</string>
        <widget class="QLabel" name="lb_main_title">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>80</x>
           <y>308</y>
-          <width>401</width>
+          <width>441</width>
           <height>41</height>
          </rect>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
         <property name="styleSheet">
-         <string notr="true">color: #FFFFFF</string>
+         <string notr="true">background-color: None;
+color: #FFFFFF;
+font-size: 18px</string>
         </property>
         <property name="text">
          <string>머신러닝 및 딥러닝을 활용한 인공지능 프로그램</string>
@@ -146,7 +146,7 @@ color: #FFFFFF;</string>
         <property name="geometry">
          <rect>
           <x>198</x>
-          <y>430</y>
+          <y>432</y>
           <width>96</width>
           <height>30</height>
          </rect>
@@ -211,7 +211,7 @@ border-radius: 10px;
         <property name="geometry">
          <rect>
           <x>300</x>
-          <y>430</y>
+          <y>432</y>
           <width>96</width>
           <height>30</height>
          </rect>
@@ -268,7 +268,7 @@ border-radius: 10px;
         <property name="geometry">
          <rect>
           <x>1080</x>
-          <y>20</y>
+          <y>6</y>
           <width>28</width>
           <height>28</height>
          </rect>
@@ -280,8 +280,9 @@ border-radius: 10px;
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #FFFFFF
-</string>
+         <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
         </property>
         <property name="text">
          <string>X</string>
@@ -303,9 +304,9 @@ border-radius: 10px;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>10</y>
-          <width>551</width>
-          <height>611</height>
+          <y>48</y>
+          <width>704</width>
+          <height>396</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -313,9 +314,6 @@ border-radius: 10px;
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>../test_data.jpg</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -336,10 +334,10 @@ border-radius: 10px;
        <widget class="QLabel" name="lb_plate_info_title">
         <property name="geometry">
          <rect>
-          <x>700</x>
-          <y>270</y>
-          <width>111</width>
-          <height>31</height>
+          <x>10</x>
+          <y>457</y>
+          <width>180</width>
+          <height>30</height>
          </rect>
         </property>
         <property name="font">
@@ -349,76 +347,64 @@ border-radius: 10px;
          </font>
         </property>
         <property name="text">
-         <string>차량 인식 정보</string>
+         <string>차량 정보</string>
         </property>
        </widget>
        <widget class="QTableWidget" name="tableWidget">
         <property name="geometry">
          <rect>
-          <x>700</x>
-          <y>300</y>
-          <width>391</width>
-          <height>211</height>
+          <x>10</x>
+          <y>490</y>
+          <width>1101</width>
+          <height>131</height>
          </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
         </property>
         <row>
          <property name="text">
-          <string>New Row</string>
+          <string>1</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>New Row</string>
+          <string>2</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>New Row</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>New Row</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>New Row</string>
+          <string>3</string>
          </property>
         </row>
         <column>
          <property name="text">
-          <string>New Column</string>
+          <string>차량 번호판</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>New Column</string>
+          <string>차량 용도</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>New Column</string>
+          <string>전송 위치</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>New Column</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>New Column</string>
+          <string>전송 시각</string>
          </property>
         </column>
        </widget>
        <widget class="QLabel" name="lb_plate_title">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>30</y>
-          <width>111</width>
-          <height>31</height>
+          <x>730</x>
+          <y>50</y>
+          <width>361</width>
+          <height>30</height>
          </rect>
         </property>
         <property name="font">
@@ -428,33 +414,36 @@ border-radius: 10px;
          </font>
         </property>
         <property name="text">
-         <string>차량 번호판</string>
+         <string>차량 번호판 인식</string>
         </property>
        </widget>
        <widget class="QLabel" name="lb_plate_img">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>70</y>
-          <width>151</width>
-          <height>61</height>
+          <x>730</x>
+          <y>80</y>
+          <width>370</width>
+          <height>120</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 5px solid black;</string>
         </property>
         <property name="text">
          <string/>
         </property>
-        <property name="pixmap">
-         <pixmap>../_icons/test_plate.png</pixmap>
-        </property>
         <property name="scaledContents">
-         <bool>true</bool>
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="btn_main2_close">
         <property name="geometry">
          <rect>
           <x>1080</x>
-          <y>20</y>
+          <y>6</y>
           <width>28</width>
           <height>28</height>
          </rect>
@@ -466,13 +455,137 @@ border-radius: 10px;
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #FFFFFF
-</string>
+         <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
         </property>
         <property name="text">
          <string>X</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="btn_video_connect">
+        <property name="geometry">
+         <rect>
+          <x>545</x>
+          <y>450</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #000000;
+color: #FFFFFF;
+border-radius: 8px;</string>
+        </property>
+        <property name="text">
+         <string>재생</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="te_text_log">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>210</y>
+          <width>370</width>
+          <height>230</height>
+         </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_video_disconnect">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>450</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #000000;
+color: #FFFFFF;
+border-radius: 8px;</string>
+        </property>
+        <property name="text">
+         <string>중지</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_top_background">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1120</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #A60000</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>10</y>
+          <width>560</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;
+color: #FFFFFF;
+font-size: 16px</string>
+        </property>
+        <property name="text">
+         <string>Artificial Intelligence Cam (ver 0.1) | 5팀 윤하이머와 준슈타인</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="icon_top_img">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>4</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;
+border: None;
+color: #FFFFFF;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../_icons/cam_icon_white.png</normaloff>../_icons/cam_icon_white.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <zorder>lb_top_background</zorder>
+       <zorder>lb_main_img</zorder>
+       <zorder>lb_plate_info_title</zorder>
+       <zorder>tableWidget</zorder>
+       <zorder>lb_plate_title</zorder>
+       <zorder>lb_plate_img</zorder>
+       <zorder>btn_main2_close</zorder>
+       <zorder>btn_video_connect</zorder>
+       <zorder>te_text_log</zorder>
+       <zorder>btn_video_disconnect</zorder>
+       <zorder>label</zorder>
+       <zorder>icon_top_img</zorder>
       </widget>
      </widget>
     </item>
