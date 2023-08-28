@@ -13,7 +13,7 @@ class CreateAndInsertDataBase:
         self.create_table()
 
     def set_init(self):
-        self.conn = psycopg2.connect(host='localhost', dbname='first_ai_project_db', user='first_ai_project', password=1234, port=5432)
+        self.conn = psycopg2.connect(host='10.10.20.97', dbname='first_ai_project_db', user='first_ai_project', password=1234, port=5432)
         # 10.10.20.97
         self.cur = self.conn.cursor()
 

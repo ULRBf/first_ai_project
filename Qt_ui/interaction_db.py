@@ -18,7 +18,7 @@ class InteractionToDB:
         self.cur = None
 
     def connecting(self):
-        self.conn = psycopg2.connect(host='localhost', dbname='first_ai_project_db', user='first_ai_project', password=1234, port=5432)
+        self.conn = psycopg2.connect(host='10.10.20.97', dbname='first_ai_project_db', user='first_ai_project', password=1234, port=5432)
         self.cur = self.conn.cursor()
 
     def insert_membership_registration(self, user_input_car_number, user_input_pw, user_input_name, user_input_phone_address): # 차량 번호, 비밀번호, 이름, 연락처

@@ -3,7 +3,7 @@
 - joinClass: 회원가입 다이얼로그
 
 최초 작성: 2023-08-27 18:45
-최종 수정: 2023-08-28 23:51
+최종 수정: 2023-08-29 00:29
 """
 
 import sys
@@ -70,9 +70,6 @@ class SignUpClass(QDialog, Ui_joinForm):
             main.get_other_class_data(data_list)
             self.show_message_box("can_sign_up")
             self.close()
-
-
-
 
 class MainClass(QMainWindow, Ui_mainForm):
     """
