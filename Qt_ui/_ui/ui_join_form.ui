@@ -90,7 +90,7 @@
     </rect>
    </property>
    <property name="placeholderText">
-    <string>이름</string>
+    <string>닉네임</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_open_login">
@@ -130,6 +130,29 @@ border-radius: 10px;
    </property>
    <property name="placeholderText">
     <string>연락처</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_dialog_close">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>28</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #FFFFFF
+</string>
+   </property>
+   <property name="text">
+    <string>X</string>
    </property>
   </widget>
  </widget>
