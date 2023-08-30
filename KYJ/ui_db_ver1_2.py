@@ -203,9 +203,6 @@ class MainClass(QMainWindow, Ui_mainForm):
         for (bbox, text, prob) in ocr_data:
             print(f">> Bounding Box: {bbox} / Text: {text} / Probability: {prob * 100}")
 
-
-
-
 class YOLOVideoClass:
     """
     YOLO 객체 감지 모델을 사용하여 비디오 처리하는 클래스

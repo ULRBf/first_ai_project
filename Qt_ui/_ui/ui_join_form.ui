@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>회원가입</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #FFFFFF;</string>
+  </property>
   <widget class="QLineEdit" name="le_id_input">
    <property name="geometry">
     <rect>
@@ -70,14 +73,27 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>50</y>
-     <width>56</width>
+     <x>157</x>
+     <y>10</y>
+     <width>92</width>
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: None;
+color: #FFFFFF;</string>
+   </property>
    <property name="text">
     <string>회원가입</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="le_name_input">
@@ -136,7 +152,7 @@ border-radius: 10px;
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>10</y>
+     <y>6</y>
      <width>28</width>
      <height>28</height>
     </rect>
@@ -148,13 +164,39 @@ border-radius: 10px;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: #FFFFFF
-</string>
+    <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
    </property>
    <property name="text">
     <string>X</string>
    </property>
   </widget>
+  <widget class="QLabel" name="lb_top_background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #A60000</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>lb_top_background</zorder>
+  <zorder>le_id_input</zorder>
+  <zorder>le_pw_input</zorder>
+  <zorder>le_cpw_input</zorder>
+  <zorder>label</zorder>
+  <zorder>le_name_input</zorder>
+  <zorder>btn_open_login</zorder>
+  <zorder>le_contact_input</zorder>
+  <zorder>btn_dialog_close</zorder>
  </widget>
  <resources/>
  <connections/>
