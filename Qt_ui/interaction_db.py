@@ -44,14 +44,16 @@ class InteractionToDB:
     # 참고 사이트 : http://www.gisdeveloper.co.kr/?p=11622
     def get_specific_car_number(self, specific_car_number, min_datetime, max_datetime):
         self.connecting()
-        self.cur.execute(f"VEHICLE_FROM_USER, VEHICLE_USE, VEHICLE_SEND_TIME, GPS"
-                         f"from TB_VEHICLE "
+        self.cur.execute(f"SELECT VEHICLE_FROM_USER, VEHICLE_USE, VEHICLE_SEND_TIME, GPS "
+                         f"FROM TB_VEHICLE "
                          f"WHERE VEHICLE_PLATE = '{specific_car_number}' AND "
                          f"VEHICLE_SEND_TIME > TO_TIMESTAMP('{min_datetime}', 'YYYYMMDD HH24:MI') AND "
                          f"VEHICLE_SEND_TIME < TO_TIMESTAMP('{max_datetime}', 'YYYYMMDD HH24:MI')", self.conn)
+
         total_data = self.cur.fetchall()
         self.conn.commit()
         self.conn.close()
+        print("DB위치", total_data)
         return total_data
 
     # 셀 클릭 시, 메시지 박스 띄우고, 메시지 박스에 이름, 연락처가 뜨도록 한다.

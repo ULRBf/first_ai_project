@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from Qt_ui._ui.search_ui import Ui_SearchForm
+from Qt_ui.interaction_db import InteractionToDB
 
 class SearchClass(QMainWindow, Ui_SearchForm):
     def __init__(self):
@@ -12,6 +13,7 @@ class SearchClass(QMainWindow, Ui_SearchForm):
         self.setupUi(self)
         self.initUi()
         self.initSignal()
+        self.initSomething()
 
     def initUi(self):
         self.stackedWidget.setCurrentIndex(1)  # 시작시 메인 페이지 0번 인덱스 고정
@@ -32,6 +34,11 @@ class SearchClass(QMainWindow, Ui_SearchForm):
     def initSignal(self):
         self.time_func()
 
+    def initSomething(self):
+        self.interaction_db_obj = InteractionToDB()
+        self.btn_search.clicked.connect(self.do_btn_search)
+
+
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.draggable = True
@@ -50,11 +57,32 @@ class SearchClass(QMainWindow, Ui_SearchForm):
     def time_func(self):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.changeStackedWidgetIndex)
-        self.timer.start(3000)
+        self.timer.start(1000)
 
     def changeStackedWidgetIndex(self):
         self.stackedWidget.setCurrentIndex(0)
+ # ====================================================================================================================
+    def do_btn_search(self):
+        # 버튼 누를 때 내부 내용이 클리어 되고, 새 내용이 나와야 함.
+        self.tableWidget.clear()
 
+        input_car_number = self.le_vehicle_info.text()
+        input_first_time = self.le_first_time.text()
+        input_second_time = self.le_second_time.text()
+        # print(input_car_number, input_first_time, input_second_time)
+        return_data_list = self.interaction_db_obj.get_specific_car_number(input_car_number, input_first_time, input_second_time)
+        if len(return_data_list) != 0:
+            car_type = return_data_list[0][1]
+            self.le_vehicle_type.setText(car_type)
+            for data_list in return_data_list:
+                user_id = data_list[0]
+                time = data_list[2]
+                formatted_time = time.strftime("%Y%m%d %H:%M:%S")
+                gps = data_list[3]
+                print(user_id, formatted_time, gps)
+
+    def detail_data(self, user_id):
+        detail_data = self.interaction_db_obj.get_user_data_on_click(user_id)
 
 # ====================================================================================================================
 
