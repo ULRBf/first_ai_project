@@ -57,6 +57,15 @@ class SignUpClass(QDialog, Ui_joinForm):
         self.btn_open_login.clicked.connect(self.check_info)
         self.btn_dialog_close.clicked.connect(lambda: print(">> join dialog close") or self.close())
 
+        # 마우스 커서 디자인
+        self.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type1.png')))
+        self.le_id_input.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.le_pw_input.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.le_cpw_input.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.le_name_input.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.le_contact_input.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.btn_open_login.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type1.png')))
+
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.draggable = True
@@ -137,6 +146,13 @@ class MainClass(QMainWindow, Ui_mainForm):
         self.lb_plate_img.setPixmap((QPixmap('./_icons/plate_img.png')))
         self.icon_top_img.setIcon((QIcon('./_icons/cam_icon_white.png')))
         self.lb_type_img.setPixmap((QPixmap('./_icons/vehicle_type.png')))
+
+        # 마우스 커서 디자인
+        self.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type1.png')))
+        self.le_id_text.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.le_pw_text.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type2.png')))
+        self.btn_open_login.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type1.png')))
+        self.btn_open_signup.setCursor(QCursor(QPixmap('./_icons/mouse_cursor_type1.png')))
 
     def initSignal(self):
         """
@@ -328,7 +344,7 @@ class MainClass(QMainWindow, Ui_mainForm):
         """
         # video_path = r'seoul_drive.mp4'
         video_path = self.load_file()
-        model_path = r'best.pt'
+        model_path = r'230829_저녁_best.pt'
         # 비디오 파일과 모델 경로를 설정하고 YOLOVideoClass 인스턴스 생성
         video_capture_thread = Thread(target=self.video_capture_using_thread, args=(video_path, model_path))
         video_capture_thread.start()
@@ -421,7 +437,7 @@ class MainClass(QMainWindow, Ui_mainForm):
             # oldest_file_path 삭제 해야함.
 
     def ml_vehicle_classification(self, car_plate_info):
-        car_plate_info = "545소 1234"
+        # car_plate_info = "545소 1234"
         with b_open('rfc_model.pkl', 'rb') as model_file:
             chili_shrimp_burger = pickle.load(model_file)
         with b_open('le_text_model.pkl', 'rb') as model_file:
@@ -429,15 +445,18 @@ class MainClass(QMainWindow, Ui_mainForm):
         with b_open('le_target_model.pkl', 'rb') as model_file:
             le_target_model = pickle.load(model_file)
 
-        if len(car_plate_info) == 8:
-            number = car_plate_info[:2]
-            text = car_plate_info[2]
-        elif len(car_plate_info) == 9:
-            number = car_plate_info[:3]
-            text = car_plate_info[3]
-        encoded_text = le_text_model.transform([text])
-        result = chili_shrimp_burger.predict([[number, encoded_text[0]]])
-        decoded_classes = le_target_model.inverse_transform(result)
+        try:
+            if len(car_plate_info) == 8:
+                number = car_plate_info[:2]
+                text = car_plate_info[2]
+            elif len(car_plate_info) == 9:
+                number = car_plate_info[:3]
+                text = car_plate_info[3]
+            encoded_text = le_text_model.transform([text])
+            result = chili_shrimp_burger.predict([[number, encoded_text[0]]])
+            decoded_classes = le_target_model.inverse_transform(result)
+        except:
+            decoded_classes = ['인식 불가']
 
         return decoded_classes[0]
 
@@ -630,7 +649,7 @@ class TextDetectionVisualizer:
         #     print(f">> Bounding Box: {bbox} / Text: {text} / Probability: {prob * 100}")
 
         img_pil = Image.fromarray(padded_img)  # 이미지를 PIL 형식으로 변환
-        font = ImageFont.truetype(r'C:\Users\KDT02\Desktop\first_ai_project\Qt_ui\_font\Pretendard-Medium.ttf', 60)  # 텍스트 렌더링을 위한 폰트 로드
+        font = ImageFont.truetype(r'./_font/Pretendard-Medium.ttf', 60)  # 텍스트 렌더링을 위한 폰트 로드
         draw = ImageDraw.Draw(img_pil)  # 이미지에 그리기 객체 생성
 
         np.random.seed(42)

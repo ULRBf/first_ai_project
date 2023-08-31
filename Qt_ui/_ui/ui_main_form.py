@@ -264,7 +264,7 @@ class Ui_mainForm(object):
         mainForm.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(mainForm)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(mainForm)
 
     def retranslateUi(self, mainForm):
