@@ -1,3 +1,8 @@
+"""
+최초 작성: 2023-08-30
+최종 수정: 2023-08-31 11:00
+"""
+
 import socket
 import time
 import datetime
