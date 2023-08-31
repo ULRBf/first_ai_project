@@ -31,11 +31,15 @@ class CreateAndInsertDataBase:
                          "USER_CONTACT VARCHAR(16))")
 
         self.cur.execute("CREATE TABLE TB_VEHICLE("
+                         
                          "VEHICLE_ID SERIAL PRIMARY KEY,"
+                         
                          "VEHICLE_PLATE VARCHAR(12),"
                          "VEHICLE_USE VARCHAR(10),"
                          "VEHICLE_SEND_TIME TIMESTAMP,"
+                         "GPS VARCHAR(30),"
                          "VEHICLE_FROM_USER INTEGER,"
+                         
                          "CONSTRAINT TB_VEHICLE FOREIGN KEY (VEHICLE_FROM_USER)"
                          "REFERENCES TB_USER (USER_ID)"
                          "ON DELETE CASCADE ON UPDATE CASCADE)")
