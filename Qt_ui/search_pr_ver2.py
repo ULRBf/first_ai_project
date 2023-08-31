@@ -61,11 +61,11 @@ class SearchClass(QMainWindow, Ui_SearchForm):
 
     def changeStackedWidgetIndex(self):
         self.stackedWidget.setCurrentIndex(0)
+
  # ====================================================================================================================
     def do_btn_search(self):
         # 버튼 누를 때 내부 내용이 클리어 되고, 새 내용이 나와야 함.
-        self.tableWidget.clear()
-
+        self.tableWidget.setRowCount(0)  # 행 자체를 초기화
         input_car_number = self.le_vehicle_info.text()
         input_first_time = self.le_first_time.text()
         input_second_time = self.le_second_time.text()
@@ -76,13 +76,44 @@ class SearchClass(QMainWindow, Ui_SearchForm):
             self.le_vehicle_type.setText(car_type)
             for data_list in return_data_list:
                 user_id = data_list[0]
-                time = data_list[2]
-                formatted_time = time.strftime("%Y%m%d %H:%M:%S")
+                gps = data_list[2]
+                formatted_time = gps.strftime("%Y%m%d %H:%M:%S")
                 gps = data_list[3]
-                print(user_id, formatted_time, gps)
+                print(">> 결과", user_id, formatted_time, gps)
+                number_result = [user_id, formatted_time, gps]
+
+                row_count = self.tableWidget.rowCount()
+                self.tableWidget.insertRow(row_count)
+
+                for row, text in enumerate([number_result]):
+                    print("Text", text)
+                    id = QTableWidgetItem(str(user_id))
+                    time = QTableWidgetItem(str(formatted_time))
+                    gps = QTableWidgetItem(str(gps))
+                    self.tableWidget.setItem(row_count, 0, id)
+                    self.tableWidget.setItem(row_count, 1, time)
+                    self.tableWidget.setItem(row_count, 2, gps)
+                    self.tableWidget.resizeColumnsToContents()  # 값이 들어올 때 테이블위젯 컬럼 크기도 자동으로 조절
+
+                print("user_id:", user_id)
+                self.show_result = self.detail_data(user_id)
+                print("show_result:", self.show_result)
+                print(self.detail_data(user_id))
+                self.tableWidget.cellClicked.connect(self.show_message_box)
+                self.clicked_row = -1
+
+    def show_message_box(self, row, col):
+        if row != self.clicked_row:  # 같은 행을 두 번 클릭하지 않은 경우에만 메시지 박스 표시
+            self.clicked_row = row
+            item = self.tableWidget.item(row, col)
+            if item:
+                text = item.text()
+                QMessageBox.information(self, "Cell Clicked", f"▸ 차주 이름: {self.show_result[0]} \n▸ 차주 연락처: {self.show_result[1]}")
+
 
     def detail_data(self, user_id):
         detail_data = self.interaction_db_obj.get_user_data_on_click(user_id)
+        return detail_data
 
 # ====================================================================================================================
 
