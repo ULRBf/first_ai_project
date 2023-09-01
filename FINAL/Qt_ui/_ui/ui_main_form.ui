@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainForm</class>
+ <widget class="QMainWindow" name="mainForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1120</width>
+    <height>630</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1120</width>
+    <height>630</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1120</width>
+    <height>630</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Artificial Intelligence Cam (ver 0.1)</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: #FFFFFF;</string>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QPushButton" name="icon_title_img">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>140</y>
+          <width>160</width>
+          <height>160</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;
+border: None;
+color: #FFFFFF;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../_icons/cam_icon_white.png</normaloff>../_icons/cam_icon_white.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>150</width>
+          <height>150</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_main_title">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>308</y>
+          <width>441</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;
+color: #FFFFFF;
+font-size: 18px</string>
+        </property>
+        <property name="text">
+         <string>머신러닝 및 딥러닝을 활용한 인공지능 프로그램</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_id_text">
+        <property name="geometry">
+         <rect>
+          <x>226</x>
+          <y>358</y>
+          <width>171</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #FFFFFF</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="icon_open_id">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>196</x>
+          <y>358</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #A60000</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../_icons/person_icon.png</normaloff>../_icons/person_icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>18</width>
+          <height>18</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_open_login">
+        <property name="geometry">
+         <rect>
+          <x>198</x>
+          <y>432</y>
+          <width>96</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+background-color: #FFFFFF;
+color: black;
+border-radius: 10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>로그인</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="icon_open_pw">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>196</x>
+          <y>394</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #A60000</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../_icons/lock_icon.png</normaloff>../_icons/lock_icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>18</width>
+          <height>18</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_pw_text">
+        <property name="geometry">
+         <rect>
+          <x>226</x>
+          <y>393</y>
+          <width>171</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #FFFFFF</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_open_signup">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>432</y>
+          <width>96</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+background-color: #FFFFFF;
+color: black;
+border-radius: 10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>회원가입</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_main_title_background">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1120</width>
+          <height>630</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>1120</width>
+          <height>630</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1120</width>
+          <height>630</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../_icons/main_title.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_main1_close">
+        <property name="geometry">
+         <rect>
+          <x>1080</x>
+          <y>6</y>
+          <width>28</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_main1_minimized">
+        <property name="geometry">
+         <rect>
+          <x>1046</x>
+          <y>6</y>
+          <width>28</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
+        </property>
+        <property name="text">
+         <string>_</string>
+        </property>
+       </widget>
+       <zorder>lb_main_title_background</zorder>
+       <zorder>icon_title_img</zorder>
+       <zorder>lb_main_title</zorder>
+       <zorder>icon_open_id</zorder>
+       <zorder>btn_open_login</zorder>
+       <zorder>icon_open_pw</zorder>
+       <zorder>btn_open_signup</zorder>
+       <zorder>le_id_text</zorder>
+       <zorder>le_pw_text</zorder>
+       <zorder>btn_main1_close</zorder>
+       <zorder>btn_main1_minimized</zorder>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <widget class="QLabel" name="lb_main_img">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>48</y>
+          <width>704</width>
+          <height>396</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 5px solid black;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+        <property name="openExternalLinks">
+         <bool>false</bool>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::LinksAccessibleByMouse</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_plate_info_title">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>457</y>
+          <width>180</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>차량 정보</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>490</y>
+          <width>704</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <column>
+         <property name="text">
+          <string>차량 번호판</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>차량 용도</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>전송 위치</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>전송 시각</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QLabel" name="lb_plate_title">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>50</y>
+          <width>361</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>차량 번호판 인식</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_plate_img">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>80</y>
+          <width>370</width>
+          <height>120</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 5px solid black;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_main2_close">
+        <property name="geometry">
+         <rect>
+          <x>1080</x>
+          <y>6</y>
+          <width>28</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_video_connect">
+        <property name="geometry">
+         <rect>
+          <x>545</x>
+          <y>450</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #000000;
+color: #FFFFFF;
+border-radius: 8px;</string>
+        </property>
+        <property name="text">
+         <string>재생</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_video_disconnect">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>450</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #000000;
+color: #FFFFFF;
+border-radius: 8px;</string>
+        </property>
+        <property name="text">
+         <string>중지</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_top_background">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1120</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #A60000</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>10</y>
+          <width>560</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;
+color: #FFFFFF;
+font-size: 16px</string>
+        </property>
+        <property name="text">
+         <string>Artificial Intelligence Cam (ver 0.1) | 5팀 윤하이머와 준슈타인</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="icon_top_img">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>4</y>
+          <width>32</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: None;
+border: None;
+color: #FFFFFF;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../_icons/cam_icon_white.png</normaloff>../_icons/cam_icon_white.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lb_type_img">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>219</y>
+          <width>370</width>
+          <height>400</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_main2_minimized">
+        <property name="geometry">
+         <rect>
+          <x>1046</x>
+          <y>6</y>
+          <width>28</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #FFFFFF;
+border: 1px solid white;
+border-radius: 5px;</string>
+        </property>
+        <property name="text">
+         <string>_</string>
+        </property>
+       </widget>
+       <zorder>lb_top_background</zorder>
+       <zorder>lb_main_img</zorder>
+       <zorder>lb_plate_info_title</zorder>
+       <zorder>tableWidget</zorder>
+       <zorder>lb_plate_title</zorder>
+       <zorder>lb_plate_img</zorder>
+       <zorder>btn_main2_close</zorder>
+       <zorder>btn_video_connect</zorder>
+       <zorder>btn_video_disconnect</zorder>
+       <zorder>label</zorder>
+       <zorder>icon_top_img</zorder>
+       <zorder>lb_type_img</zorder>
+       <zorder>btn_main2_minimized</zorder>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
