@@ -36,6 +36,8 @@ import time
 from threading import Thread
 from PIL import ImageFont, ImageDraw, Image
 from queue import Queue
+import shutil
+
 HEADER_BUFFER = 32
 BUFFER = 1024
 warnings.filterwarnings('ignore')  # 불필요한 경고문 제거
@@ -258,7 +260,6 @@ class MainClass(QMainWindow, Ui_mainForm):
         self.client_socket.send(header_data)
         self.client_socket.send(json_data)
 
-
     # client의 Back으로부터 데이터를 받는 작업
     def receive_fuc(self):
         while True:
@@ -376,6 +377,7 @@ class MainClass(QMainWindow, Ui_mainForm):
     def start_ocr_module(self):  # 그 자식
         while True:
             file_path = r"./_temp_img_dir"
+            destination_path = r"./_save_img"
             file_finder = FileFinderClass(file_path)
             oldest_file_path = file_finder.find_oldest_file()
             latest_file_path = file_finder.find_latest_file()
@@ -399,7 +401,8 @@ class MainClass(QMainWindow, Ui_mainForm):
                 number_result = self.car_number_filter(ocr_result)
 
                 if os.path.exists(oldest_file_path):  # 위의 OCR이 수행되면 경로상의 과거 파일이 삭제됨
-                    os.remove(oldest_file_path)
+                    shutil.move(oldest_file_path, destination_path)
+                    # os.remove(oldest_file_path)
 
                 ml_result = self.ml_vehicle_classification(number_result)
                 print(f">> ocr_recognition: {number_result}")
@@ -409,7 +412,7 @@ class MainClass(QMainWindow, Ui_mainForm):
                                 'user_id': self.user_id,
                                 'ocr_recog': number_result,
                                 'vehicle_classifi': ml_result,
-                                'GPS': '광주광역시 상무지구',
+                                'GPS': '광주광역시 수완지구',
                                 'current_time': formatted_datetime}
 
                 self.send_fuc(total_result)  # 서버에 센드
@@ -578,15 +581,22 @@ class TextDetectionVisualizer:
         self.target_height = target_height  # 출력 이미지의 원하는 높이
         self.target_width = target_width  # 출력 이미지의 원하는 너비
 
-    def enhance_image(self, image):
+    def apply_canny(self, image):
+        """
+        Apply Canny edge detection to the input image.
+        """
+        edges = cv2.Canny(image, threshold1=30, threshold2=100)  # You can adjust the threshold values
+        return edges
+
+    def add_enhance(self, image):
         """
         입력 이미지를 가우시안 블러를 사용하여 개선하는 메서드를 정의
         """
-        blurred = cv2.GaussianBlur(image, (0, 0), 3)  # 가우시안 블러 적용
-        enhanced = cv2.addWeighted(image, 1.5, blurred, -0.5, 0)  # 이미지 개선
-        return enhanced
+        blurred = cv2.GaussianBlur(image, (1, 1), 0)  # 가우시안 블러 적용
+        # enhanced = cv2.addWeighted(image, 1.5, blurred, -0.5, 0)  # 이미지 개선
+        return blurred
 
-    def equalize_histogram(self, image):
+    def add_equalize_histogram(self, image):
         """
         Apply histogram equalization to enhance image contrast
         """
@@ -599,7 +609,7 @@ class TextDetectionVisualizer:
         선명도 필터를 사용하여 입력 이미지의 선명도를 높이는 방법을 정의
         """
         sharpen_value_1 = [[0, -1, 0], [-1, 5, -1], [0, -1, 0]]
-        sharpen_value_2 = [[0, -1, 0], [-1, 6, -1], [0, -1, 0]]
+        sharpen_value_2 = [[0, -1, 0], [-1, 5, -1], [0, -1, 0]]
         sharpen_value_3 = [[-1, -1, -1], [-1, 10, -1], [-1, -1, -1]]
         kernel = np.array(sharpen_value_2)
         sharpened = cv2.filter2D(image, -1, kernel)
@@ -636,41 +646,43 @@ class TextDetectionVisualizer:
         """
         # OpenCV를 사용하여 입력 이미지를 읽음
         img = cv2.imread(image_path)
-        enhanced_img = self.enhance_image(img)  # 이미지 개선
-        equalized_img = self.equalize_histogram(enhanced_img)  # 히스토그램 이퀄 개선
-        sharpened_img = self.add_sharpen(equalized_img)  # 이미지 선명도 개선
+        thresholded_img = self.add_threshold(img)  # 임계값 추가
+        cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+        enhance_img = self.add_enhance(thresholded_img)
+        sharpened_img = self.add_sharpen(enhance_img)  # 이미지 선명도 개선
         padded_img = self.add_padding(sharpened_img)  # 목표 차원에 맞게 패딩 추가
-        thresholded_img = self.add_threshold(padded_img)  # 임계값 추가
 
-        result = self.reader.readtext(thresholded_img)
+        result = self.reader.readtext(padded_img)
+
+        return result
 
         # 각 인식된 텍스트 영역에 대해 세부 정보를 출력
         # for (bbox, text, prob) in result:
         #     print(f">> Bounding Box: {bbox} / Text: {text} / Probability: {prob * 100}")
 
-        img_pil = Image.fromarray(padded_img)  # 이미지를 PIL 형식으로 변환
-        font = ImageFont.truetype(r'./_font/Pretendard-Medium.ttf', 60)  # 텍스트 렌더링을 위한 폰트 로드
-        draw = ImageDraw.Draw(img_pil)  # 이미지에 그리기 객체 생성
+        # img_pil = Image.fromarray(padded_img)  # 이미지를 PIL 형식으로 변환
+        # font = ImageFont.truetype(r'./_font/Pretendard-Medium.ttf', 60)  # 텍스트 렌더링을 위한 폰트 로드
+        # draw = ImageDraw.Draw(img_pil)  # 이미지에 그리기 객체 생성
+        #
+        # np.random.seed(42)
+        # COLORS = np.random.randint(0, 255, size=(255, 3), dtype="uint8")  # 랜덤한 색상 생성
+        #
+        # # 각 인식된 텍스트 영역에 대해 경계 상자와 텍스트를 이미지에 그림
+        # for i in result:
+        #     x = i[0][0][0]  # 경계 상자의 좌상단 x 좌표
+        #     y = i[0][0][1]  # 경계 상자의 좌상단 y 좌표
+        #     w = i[0][1][0] - i[0][0][0]  # 경계 상자의 너비
+        #     h = i[0][2][1] - i[0][1][1]  # 경계 상자의 높이
+        #
+        #     color_idx = random.randint(0, 255)  # 랜덤한 색상 인덱스 선택
+        #     color = tuple([int(c) for c in COLORS[color_idx]])  # 색상 값을 튜플로 변환
+        #
+        #     # 인식된 텍스트 영역 주위에 사각형 그리기
+        #     draw.rectangle(((x, y), (x + w, y + h)), outline=color, width=2)
+        #     # 사각형 위에 인식된 텍스트 그리기
+        #     draw.text((int((x + x + w) / 2), y - 2), str(i[1]), font=font, fill=color)
 
-        np.random.seed(42)
-        COLORS = np.random.randint(0, 255, size=(255, 3), dtype="uint8")  # 랜덤한 색상 생성
-
-        # 각 인식된 텍스트 영역에 대해 경계 상자와 텍스트를 이미지에 그림
-        for i in result:
-            x = i[0][0][0]  # 경계 상자의 좌상단 x 좌표
-            y = i[0][0][1]  # 경계 상자의 좌상단 y 좌표
-            w = i[0][1][0] - i[0][0][0]  # 경계 상자의 너비
-            h = i[0][2][1] - i[0][1][1]  # 경계 상자의 높이
-
-            color_idx = random.randint(0, 255)  # 랜덤한 색상 인덱스 선택
-            color = tuple([int(c) for c in COLORS[color_idx]])  # 색상 값을 튜플로 변환
-
-            # 인식된 텍스트 영역 주위에 사각형 그리기
-            draw.rectangle(((x, y), (x + w, y + h)), outline=color, width=2)
-            # 사각형 위에 인식된 텍스트 그리기
-            draw.text((int((x + x + w) / 2), y - 2), str(i[1]), font=font, fill=color)
-
-        return result
+        # return result
 
         # 최종 이미지를 matplotlib을 사용하여 표시
         # plt.figure(figsize=(10, 10))
